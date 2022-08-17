@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn,ManyToMany,JoinTable } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn,ManyToMany,JoinTable, ManyToOne } from 'typeorm';
 import { IsUrl } from "class-validator";
 import { Categoria } from "../../categorias/models/categorias.entity";
+import { Autor } from 'src/autor/models/autor.model';
 @Entity()
 export class Libro {
     @PrimaryGeneratedColumn()
@@ -22,4 +23,7 @@ export class Libro {
     @ManyToMany(()=> Categoria)
     @JoinTable()
     pertenece: Categoria[]
+
+    @ManyToOne(()=> Autor,(autor) => autor.libros)
+    autor: Autor
 }

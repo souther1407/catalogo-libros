@@ -6,7 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Libro } from "./libros/models/Libro.entity.js";
 import { Categoria } from './categorias/models/categorias.entity';
+import { Autor } from "./autor/models/autor.model";
 import { CategoriasModule } from './categorias/categorias.module';
+import { AutorModule } from './autor/autor.module';
+import { LinkDescargasModule } from './link-descargas/link-descargas.module';
 
 @Module({
   imports: [LibrosModule,
@@ -17,11 +20,13 @@ import { CategoriasModule } from './categorias/categorias.module';
       username:"postgres",
       password:"admin",
       database:"catalogo_libros",
-      entities:[Libro,Categoria],
+      entities:[Libro,Categoria,Autor],
       synchronize:true,
 
     }),
-    CategoriasModule
+    CategoriasModule,
+    AutorModule,
+    LinkDescargasModule
   ],
   controllers: [AppController],
   providers: [AppService],
