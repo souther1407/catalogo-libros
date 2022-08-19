@@ -10,6 +10,7 @@ import { Autor } from "./autor/models/autor.model";
 import { CategoriasModule } from './categorias/categorias.module';
 import { AutorModule } from './autor/autor.module';
 import { LinkDescargasModule } from './link-descargas/link-descargas.module';
+import { Link } from './link-descargas/models/links.models';
 
 @Module({
   imports: [LibrosModule,
@@ -20,7 +21,7 @@ import { LinkDescargasModule } from './link-descargas/link-descargas.module';
       username:"postgres",
       password:"admin",
       database:"catalogo_libros",
-      entities:[Libro,Categoria,Autor],
+      entities:[Libro,Categoria,Autor,Link],
       synchronize:true,
 
     }),
